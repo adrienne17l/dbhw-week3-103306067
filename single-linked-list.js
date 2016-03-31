@@ -25,19 +25,22 @@ SinglyLinkedList.prototype.add = function(data) {
 SinglyLinkedList.prototype.remove = function(data) {
   var previous = this.head;
   var current = this.head;
-  while(current){
-    if(current.data === data) {
-      if(current === this.head) {
-        this.head = this.head.next;
-      }
-      if(current === this.tail){
+  while (current) {
+    if (current.data == data) {
+      if (current == this.head) {
+        this.head = current.next;
+      }else if (current == this.tail)
+      {
         this.tail = previous;
+        this.tail.next = null;
+      }else {
+        previous.next = current.next
       }
-      previous.next = current.next;
-    }else{
+      this.numberOfValues -- ;
+    }else {
       previous = current;
     }
-      current = current.next;
+    current = current.next;
   }
 };
 
@@ -64,13 +67,13 @@ SinglyLinkedList.prototype.length = function() {
 };
 
 SinglyLinkedList.prototype.print = function() {
-  var string = "";
+  var str = '';
   var current = this.head;
-  while(current) {
-    string += current.data + " ";
-    current = current.next;
+  while (current) {
+    str += current.data+ ' ';
+    current=current.next;
   }
-  return string.this;
+  return str.trim();
 };
 
 
